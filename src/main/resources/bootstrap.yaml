@@ -1,0 +1,23 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: wallet-web
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: ${nacos.server-addr}
+        file-extension: yaml
+        ext-config:
+          - data-id: application.yaml
+            refresh: true
+      discovery:
+        server-addr: ${nacos.server-addr}
+        metadata:
+          group: main
+          version: 1.0
+          region: dev
+nacos:
+  server-addr: localhost:8848
